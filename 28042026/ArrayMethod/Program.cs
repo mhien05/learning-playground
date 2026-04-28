@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace ArrayMethod
 {
@@ -26,14 +27,42 @@ namespace ArrayMethod
 
             return count;
         }
+        public static int GetNumberOfDimensionOfAnArray<T>(T[] arr)
+        {
+            return 1;
+        }
+        public static int GetNumberOfDimensionOfAnArray<T>(T[,] arr)
+        {
+            return 2;
+        }
     }
 
     internal class Program
     {
         static void Main(string[] args)
         {
+            // Set console output to allow typing Vietnamese in UTF-8.
+            // Đặt console output cho phép gõ tiếng việt UTF-8
+
+            Console.OutputEncoding = Encoding.UTF8;
+
+
+            // Test array
+            // Mảng dùng để test
+
             int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
-            Console.WriteLine(ArrayMethod.GetLenghtOfAnArray(nums));
+            int[,] matrix = { { 1, 3, 5, 7 }, { 2, 4, 6, 8 } };
+
+            // Get Length of an array
+            // Lấy độ dài của mảng
+
+            Console.WriteLine($"Độ dài của mảng nums: {ArrayMethod.GetLenghtOfAnArray(nums)}.\n");
+
+            // Check array dimension
+            // Kiểm tra mảng 1 hay 2 chiều
+            Console.WriteLine($"Mảng nums là mảng {ArrayMethod.GetNumberOfDimensionOfAnArray(nums)} chiều.\n");
+            Console.WriteLine($"Mảng matrix là mảng {ArrayMethod.GetNumberOfDimensionOfAnArray(matrix)} chiều.\n");
+            
         }
     }
 }
