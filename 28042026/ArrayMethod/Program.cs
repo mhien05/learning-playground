@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ArrayMethod
 {
@@ -99,6 +100,57 @@ namespace ArrayMethod
             Console.WriteLine($"Mảng matrix là mảng {ArrayMethod.GetNumberOfDimensionOfAnArray(matrix)} chiều.\n");
 
             Console.WriteLine($"Mảng matrix có {ArrayMethod.GetLengthOfEachDimension(matrix, 0)} hàng và {ArrayMethod.GetLengthOfEachDimension(matrix, 1)} cột");
+
+
+
+
+
+            int[,] threeByThreeArray =
+            {
+                {2, 3, 6, 14, 16 },
+                {1, 4, 14, 17, 20 },
+                {3, 5, 6, 12, 19 }
+            };
+
+            int row = threeByThreeArray.GetLength(0);
+            int coloumn = threeByThreeArray.GetLength(1);
+            int total = 0;
+            for(int i = 0; i < row; i++)
+            {
+                for(int j = 0; j <  coloumn; j++)
+                {
+                    total += threeByThreeArray[i, j];
+                }
+            }
+            Console.WriteLine(total); // OUTPUT: total = 142
+
+
+            string[][] timetable = new string[][]
+            {
+                new string[] { "Toán", "Văn", "Anh" },
+                new string[] { "Lý", "Hóa" },
+                new string[] { "Toán", "Thể dục", "Sinh", "Sử" }
+            };
+
+            int timetablesRow = timetable.Length;
+
+            for(int i = 0; i < timetablesRow; i++)
+            {
+                Console.Write($"Thứ {i+2}: ");
+                for(int j = 0; j < timetable[i].Length; j++)
+                {
+                    if (j != timetable[i].Length - 1)
+                    {
+                        Console.Write($"{timetable[i][j]}, ");
+                    }
+                    else Console.WriteLine(timetable[i][j]);
+                }
+            }
+
+            //OUTPUT:
+            //Thứ 2: Toán, Văn, Anh
+            //Thứ 3: Lý, Hóa
+            //Thứ 4: Toán, Thể dục, Sinh, Sử
         }
     }
 }
