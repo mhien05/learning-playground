@@ -27,13 +27,48 @@ namespace ArrayMethod
 
             return count;
         }
+        // Method that checks and returns whether it is a one-dimensional array.
+        // Phương thức kiểm tra và trả về là mảng 1 chiều
         public static int GetNumberOfDimensionOfAnArray<T>(T[] arr)
         {
+            // The input is a one-dimensional array, so it returns 1.
+            // Đầu vào là mảng 1 chiều nên trả về 1
             return 1;
         }
+        // Method that checks and returns whether it is a two-dimensional array.
+        // Phương thức kiểm tra và trả về là mảng 2 chiều
         public static int GetNumberOfDimensionOfAnArray<T>(T[,] arr)
         {
+            // The input is a two-dimensional array, so it returns 2.
+            // Đầu vào là mảng 2 chiều nên trả về 2
             return 2;
+        }
+
+        // Method that return the length of each dimension
+        // Phương thức trả về độ dài của mảng theo từng chiều
+        public static int GetLengthOfEachDimension<T>(T[] arr)
+        {
+            // The input is a one-dimensional array, so it will return the size of the one-dimensional array.
+            // Đầu vào là mảng 1 chiều nên sẽ trả về kích thước của mảng 1 chiều
+            return GetLenghtOfAnArray(arr);
+        }
+        public static int GetLengthOfEachDimension<T>(T[,] arr, int dimension)
+        {
+            int row = 0;
+            int coloum = 0;
+
+            for(int i = 0; i < arr.GetLength(0); i++)
+            {
+                row++;
+                for(int j = 0; j < arr.GetLength(1); j++)
+                {
+                    if (i == 0) coloum++;
+                }
+            }
+
+            if (dimension == 0) return row;
+            if(dimension == 1) return coloum;
+            else return -1;
         }
     }
 
@@ -62,7 +97,8 @@ namespace ArrayMethod
             // Kiểm tra mảng 1 hay 2 chiều
             Console.WriteLine($"Mảng nums là mảng {ArrayMethod.GetNumberOfDimensionOfAnArray(nums)} chiều.\n");
             Console.WriteLine($"Mảng matrix là mảng {ArrayMethod.GetNumberOfDimensionOfAnArray(matrix)} chiều.\n");
-            
+
+            Console.WriteLine($"Mảng matrix có {ArrayMethod.GetLengthOfEachDimension(matrix, 0)} hàng và {ArrayMethod.GetLengthOfEachDimension(matrix, 1)} cột");
         }
     }
 }
